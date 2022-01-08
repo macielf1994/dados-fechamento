@@ -6,10 +6,10 @@ from glob import glob
 
 def exec_create_tables(config: dict):
 
-    load_dotenv('/opt/job-projects/dados-fechamento/.env')
+    load_dotenv('.env')
     conn = pg.connect(os.environ.get('DSN'))
     cursor = conn.cursor()
-    list_create_table_querys = glob('/opt/job-projects/dados-fechamento/querys/create_tables/*.sql')
+    list_create_table_querys = glob('querys/create_tables/*.sql')
 
     for query_path in list_create_table_querys:
         try:

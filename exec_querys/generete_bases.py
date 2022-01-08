@@ -9,11 +9,11 @@ from glob import glob
 
 def generate_files_bases(config: dict):
 
-    load_dotenv('/opt/job-projects/dados-fechamento/.env')
+    load_dotenv('.env')
     conn = pg.connect(os.environ.get('DSN'))
     cursor = conn.cursor()
     year_month = datetime.strptime(str(date.today() - relativedelta(months = 1)), '%Y-%m-%d').strftime('%Y-%m')
-    list_sql_files = glob('/opt/job-projects/dados-fechamento/querys/selects/*.sql')
+    list_sql_files = glob('querys/selects/*.sql')
 
     list_name_sheet_refined = [
         'New Registereds',
@@ -23,7 +23,7 @@ def generate_files_bases(config: dict):
         'Clicks Data'
         ]
 
-    excel_data = pd.ExcelWriter(f'Dados Fechamento {year_month}.xlsx', engine='xlsxwriter')
+    excel_data = pd.ExcelWriter(f'closing_data_jobs/Dados Fechamento {year_month}.xlsx', engine='xlsxwriter')
 
     for name_sheet, query_path in zip(list_name_sheet_refined, list_sql_files):
         try:

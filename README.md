@@ -15,9 +15,9 @@ pip install -r requirements.txt
 DSN="host=<ip> port=<porta> user=<usuario> password=<senha> dbname=<db>"
 ```
 
-3. No módulo mmids passe uma lista de MMIDs à ser consultado.
+3. No módulo <b>mmids</b> passe uma lista de MMIDs à ser consultado.
 
-4. Execute o módulo exec_job definindo as seguintes configurações
+4. Execute o módulo <b>exec_job</b> definindo as seguintes configurações
 
 ```python
 closing_config = {
@@ -28,4 +28,4 @@ closing_config = {
 }
 ```
 
-Por fim um arquivo Excel é gerado com as cinco abas dos dados de fechamento mensal dos customers.
+Por fim um arquivo Excel é gerado com as cinco abas dos dados de fechamento mensal dos customers na pasta <b>closing_data_jobs</b> do projeto.
