@@ -13,7 +13,7 @@ def generate_files_bases(config: dict):
     conn = pg.connect(os.environ.get('DSN'))
     cursor = conn.cursor()
     year_month = datetime.strptime(str(date.today() - relativedelta(months = 1)), '%Y-%m-%d').strftime('%Y-%m')
-    list_sql_files = glob('/opt/job-projects/dados-fechamento/*.sql')
+    list_sql_files = glob('/opt/job-projects/dados-fechamento/querys/selects/*.sql')
 
     list_name_sheet_refined = [
         'New Registereds',
