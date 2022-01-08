@@ -2,24 +2,22 @@
 ## Sobre
 
 Projeto pessoal para facilitar gerar relatórios mensais no trabalho.
-___
 
-## Começando
-___
+## Executando o projeto
 
-1. <b>Instalando as dependências:</b>
+1. Instalando as dependências
 ```bash
 pip install -r requirements.txt
 ```
 
-2. <b>Exporte a variável DSN de conexão com o banco em um arquivo .env:</b>
+2. Exporte a variável DSN de conexão com o banco em um arquivo .env
 ```
 DSN="host=<ip> port=<porta> user=<usuario> password=<senha> dbname=<db>"
 ```
 
-3. No módulo mmids passe uma lista de MMIDs a ser consultado.
+3. No módulo mmids passe uma lista de MMIDs à ser consultado.
 
-4. <b>Execute o módulo exec_job definindo as seguintes configurações:</b>
+4. Execute o módulo exec_job definindo as seguintes configurações
 
 ```python
 closing_config = {
@@ -30,4 +28,4 @@ closing_config = {
 }
 ```
 
-Por fim um arquivo Excel é gerado com as cinco abas dos dados de fechamento dos customers.
+Por fim um arquivo Excel é gerado com as cinco abas dos dados de fechamento mensal dos customers.
