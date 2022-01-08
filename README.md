@@ -10,9 +10,10 @@ Projeto pessoal para facilitar gerar relatórios mensais no trabalho.
 pip install -r requirements.txt
 ```
 
-2. Exporte a variável DSN de conexão com o banco em um arquivo .env
+2. Exporte as seguintes variáveis no arquivo .env
 ```
 DSN="host=<ip> port=<porta> user=<usuario> password=<senha> dbname=<db>"
+DIRECOTORY=<endereço-local-para-salvar-o-arquivo>
 ```
 
 3. No módulo <b>mmids</b> passe uma lista de MMIDs à ser consultado.
