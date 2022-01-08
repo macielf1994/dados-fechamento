@@ -19,7 +19,8 @@ def generate_files_bases(config: dict):
         'New Registereds',
         'Total Unique Users',
         'Unique Users Data',
-        'U. User Data Devices'
+        'U. User Data Devices',
+        'Clicks Data'
         ]
 
     excel_data = pd.ExcelWriter(f'Dados Fechamento {year_month}.xlsx', engine='xlsxwriter')
@@ -33,6 +34,7 @@ def generate_files_bases(config: dict):
                 config.get('version'),
                 config.get('mmids')
                 )
+            print(select_table_query)
 
             df = pd.read_sql(select_table_query, conn)
             list_column_names_refined = [column.replace('_', ' ').title() for column in list(df.columns.values)]
