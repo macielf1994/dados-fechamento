@@ -7,8 +7,21 @@ from datetime import datetime, date
 from dateutil.relativedelta import relativedelta
 from glob import glob
 
+import os
+
+def create_directory():
+    try:
+        os.stat(os.environ.get('DIRECTORY'))
+        os.path.realpath(os.environ.get('DIRECTORY'))
+        os.startfile(os.environ.get('DIRECTORY'))
+    except:
+        os.makedirs(os.environ.get('DIRECTORY'))
+        os.path.realpath(os.environ.get('DIRECTORY'))
+        os.startfile(os.environ.get('DIRECTORY'))
+
 def generate_files_bases(config: dict):
 
+    create_directory()
     load_dotenv('.env')
     conn = pg.connect(os.environ.get('DSN'))
     cursor = conn.cursor()
@@ -23,7 +36,7 @@ def generate_files_bases(config: dict):
         'Clicks Data'
         ]
 
-    excel_data = pd.ExcelWriter(f'closing_data_jobs/Dados Fechamento {year_month}.xlsx', engine='xlsxwriter')
+    excel_data = pd.ExcelWriter(f"{os.environ.get('DIRECTORY')}/Dados Fechamento {year_month}.xlsx", engine='xlsxwriter')
 
     for name_sheet, query_path in zip(list_name_sheet_refined, list_sql_files):
         try:
