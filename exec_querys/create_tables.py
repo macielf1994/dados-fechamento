@@ -2,19 +2,14 @@ from generate_querys.gen_querys import generate_query
 import psycopg2 as pg
 from dotenv import load_dotenv
 import os
+from glob import glob
 
 def exec_create_tables(config: dict):
 
     load_dotenv('/opt/job-projects/dados-fechamento/.env')
     conn = pg.connect(os.environ.get('DSN'))
     cursor = conn.cursor()
-
-    list_create_table_querys = [
-        'querys/create_tables/1_create_unique_users.sql',
-        'querys/create_tables/2_create_unique_users_data.sql',
-        'querys/create_tables/3_create_unique_users_device.sql',
-        'querys/create_tables/4_create_unique_users_device_data.sql'
-    ]
+    list_create_table_querys = glob('/opt/job-projects/dados-fechamento/querys/create_tables/*.sql')
 
     for query_path in list_create_table_querys:
         try:

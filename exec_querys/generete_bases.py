@@ -5,31 +5,26 @@ import os
 import pandas as pd
 from datetime import datetime, date
 from dateutil.relativedelta import relativedelta
+from glob import glob
 
 def generate_files_bases(config: dict):
 
-    load_dotenv('/opt/job-projects/dados-fechamento')
+    load_dotenv('/opt/job-projects/dados-fechamento/.env')
     conn = pg.connect(os.environ.get('DSN'))
     cursor = conn.cursor()
     year_month = datetime.strptime(str(date.today() - relativedelta(months = 1)), '%Y-%m-%d').strftime('%Y-%m')
+    list_sql_files = glob('/opt/job-projects/dados-fechamento/*.sql')
 
-    list_name_sheet = [
+    list_name_sheet_refined = [
         'New Registereds',
         'Total Unique Users',
         'Unique Users Data',
         'U. User Data Devices'
         ]
-    list_select_table_querys = [
-        'querys/selects/1_select_new_registered_users.sql',
-        'querys/selects/2_select_count_unique_users.sql',
-        'querys/selects/3_select_unique_users_data.sql',
-        'querys/selects/4_select_unique_users_device_data.sql',
-        # 'querys/selects/5_select_click_mmids_data.sql'
-    ]
 
     excel_data = pd.ExcelWriter(f'Dados Fechamento {year_month}.xlsx', engine='xlsxwriter')
 
-    for name_sheet, query_path in zip(list_name_sheet, list_select_table_querys):
+    for name_sheet, query_path in zip(list_name_sheet_refined, list_sql_files):
         try:
             select_table_query = generate_query(
                 query_path,
