@@ -29,4 +29,4 @@ closing_config = {
 }
 ```
 
-Por fim um arquivo Excel é gerado com as cinco abas dos dados de fechamento mensal dos customers na pasta <b>closing_data_jobs</b> do projeto.
+Por fim um arquivo Excel é gerado com as cinco abas dos dados de fechamento mensal dos customers na pasta setada no arquivo de configuração <b>.env</b> do projeto.
