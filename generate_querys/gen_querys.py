@@ -1,6 +1,6 @@
 from datetime import datetime, date
 
-def generate_query(path_query: str, start_date: str, end_date: str, version: str, list_int_mmids: str):
+def generate_query(path_query: str, start_date: str, end_date: str, version: str, list_int_mmids: str) -> str:
     month = datetime.strptime(start_date, '%Y-%m-%d').strftime('%B').lower()
     today_date_number = datetime.strptime(str(date.today()), '%Y-%m-%d').strftime('%Y%m%d')
     mmids_str_list = [str(mmid) for mmid in list_int_mmids]
